@@ -1,0 +1,59 @@
+@font-face {
+  font-family: gothic;
+  src: url("/font/CenturyGothicRegular.ttf");
+}
+
+.container {
+  margin: auto;
+  max-width: 70%;
+  height: 800px;
+  margin-top: 3%;
+}
+
+.left {
+  width: 50%;
+  height: 100%;
+  float: left;
+  background-color: rgb(230, 228, 228);
+}
+
+h1 {
+  margin-top: 20%;
+  color: rgb(187, 31, 31);
+  font-family: gothic;
+  text-align: center;
+}
+
+p {
+  font-size: 100px;
+  margin-top: 10%;
+  color: rgb(187, 31, 31);
+  font-family: gothic;
+  text-align: center;
+}
+
+.right {
+  width: 50%;
+  float: right;
+  height: 100%;
+  background-color: rgb(226, 226, 226);
+}
+
+.current {
+  font-family: gothic;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+}
+
+.box {
+  width: 30%;
+  padding: 5%;
+  margin-top: 25%;
+  margin-left: 30%;
+  background-color: crimson;
+}
+
+.box_text {
+  margin-bottom: 20px;
+}
