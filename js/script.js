@@ -1,34 +1,36 @@
-var scores, roundScores, activePlayer, dice;
+var scores, roundScores, activePlayer;
 
 scores = [0, 0];
 roundScores = 0;
 activePlayer = 0;
-dice = Math.floor(Math.random() * 6) + 1;
-document.querySelector("#pscore" + activePlayer).textContent = dice;
 
-document.querySelector(".btn-hold").addEventListener("click", function () {
-  if (gamePlaying) {
-    // Add CURRENT score to GLOBAL score
-    scores[activePlayer] += roundScore;
+document.querySelector(".dice").style.display = "none";
 
-    // Update the UI
-    document.querySelector("#score-" + activePlayer).textContent =
-      scores[activePlayer];
+document.getElementById("gscore0").textContent = "0";
+document.getElementById("gscore1").textContent = "0";
+document.getElementById("pscore0").textContent = "0";
+document.getElementById("pscore1").textContent = "0";
 
-    // Check if player won the game
-    if (scores[activePlayer] >= 100) {
-      document.querySelector("#name-" + activePlayer).textContent = "Winner!";
-      document.querySelector(".dice").style.display = "none";
-      document
-        .querySelector(".player-" + activePlayer + "-panel")
-        .classList.add("winner");
-      document
-        .querySelector(".player-" + activePlayer + "-panel")
-        .classList.remove("active");
-      gamePlaying = false;
-    } else {
-      //Next player
-      nextPlayer();
-    }
+document.querySelector(".btn-roll").addEventListener("click", function () {
+  //This line is generating random numbers from 1 to 6
+  var dice = Math.floor(Math.random() * 6) + 1;
+
+  var diceDom = document.querySelector(".dice");
+  diceDom.style.display = "block";
+  diceDom.src = "/img/" + dice + ".png";
+
+  if (dice !== 1) {
+    roundScores += dice;
+    document.getElementById("pscore" + activePlayer).textContent = roundScores;
+  } else {
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+    roundScores = 0;
+    document.getElementById("pscore0").textContent = "0";
+    document.getElementById("pscore1").textContent = "0";
+
+    document.querySelector(".left").classList.toggle("active");
+    document.querySelector(".right").classList.toggle("active");
+
+    document.querySelector(".dice").style.display = "none";
   }
 });
