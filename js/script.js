@@ -1,5 +1,5 @@
 var scores, roundScores, activePlayer, gamePlaying;
-gamePlaying = true;
+
 newGame();
 
 document.querySelector(".btn-roll").addEventListener("click", function () {
@@ -12,7 +12,7 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
 
     if (dice !== 1) {
       roundScores += dice;
-      if (scores[activePlayer] + roundScores >= 100) {
+      if (scores[activePlayer] + roundScores >= 20) {
         document.querySelector("#gscore" + activePlayer).textContent = "Winner";
         gamePlaying = false;
       }
@@ -52,6 +52,7 @@ function newGame() {
   scores = [0, 0];
   roundScores = 0;
   activePlayer = 0;
+  gamePlaying = true;
 
   document.querySelector(".dice").style.display = "none";
 
@@ -59,4 +60,8 @@ function newGame() {
   document.getElementById("gscore1").textContent = "0";
   document.getElementById("pscore0").textContent = "0";
   document.getElementById("pscore1").textContent = "0";
+
+  document.querySelector(".left").classList.remove("active");
+  document.querySelector(".right").classList.remove("active");
+  document.querySelector(".left").classList.add("active");
 }
