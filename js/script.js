@@ -12,6 +12,10 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
 
     if (dice !== 1) {
       roundScores += dice;
+      if (scores[activePlayer] + roundScores >= 100) {
+        document.querySelector("#gscore" + activePlayer).textContent = "Winner";
+        gamePlaying = false;
+      }
       document.getElementById(
         "pscore" + activePlayer
       ).textContent = roundScores;
@@ -26,10 +30,6 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
     scores[activePlayer] += roundScores;
     document.querySelector("#gscore" + activePlayer).textContent =
       scores[activePlayer];
-    if (scores[activePlayer] >= 20) {
-      document.querySelector("#gscore" + activePlayer).textContent = "Winner";
-      gamePlaying = false;
-    }
     nextPlayer();
   }
 });
